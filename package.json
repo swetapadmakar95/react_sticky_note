@@ -1,5 +1,5 @@
 {
-  "homepage": "https://swetapadmakar95.github.io/react_sticky_note",
+  "homepage": ".",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-beautiful-dnd": "^13.1.8",
     "autoprefixer": "^10.4.20",
     "gh-pages": "^6.2.0",
