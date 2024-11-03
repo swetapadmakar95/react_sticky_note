@@ -60,7 +60,7 @@ function App() {
         try {
             const decodedToken = jwtDecode(token);
             if (decodedToken.exp * 1000 > Date.now()) { // Check token expiration
-              const userResponse = await fetch(`http://localhost:8080/user/${decodedToken?.user?.id}`, {
+              const userResponse = await fetch(`https://react-sticky-note.onrender.com/user/${decodedToken?.user?.id}`, {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` } // Include the token for authentication
             });
@@ -89,7 +89,7 @@ function App() {
   }
   async function fetchdata(){
     try{
-      const res = await fetch('http://localhost:8080');
+      const res = await fetch('https://react-sticky-note.onrender.com');
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
@@ -124,7 +124,7 @@ function App() {
 
   const deleteNoteImmediately = async (itm) => {
     try {
-      const response = await fetch(`http://localhost:8080/${itm?._id}`, {
+      const response = await fetch(`https://react-sticky-note.onrender.com/${itm?._id}`, {
         method: 'DELETE',
       });
       
@@ -253,7 +253,7 @@ function App() {
 
   const addNewNote = async()=>{
     try{
-      const response = await fetch('http://localhost:8080',{
+      const response = await fetch('https://react-sticky-note.onrender.com',{
         method: 'POST',
         body:JSON.stringify({
           Title: noteTitle,
@@ -278,7 +278,7 @@ function App() {
 
   const saveNote = async(itm) => {
     try{
-      const response = await fetch(`http://localhost:8080/${itm?._id}`,{
+      const response = await fetch(`https://react-sticky-note.onrender.com/${itm?._id}`,{
         method:'PATCH',
         body:JSON.stringify({
           Title: noteTitle,
@@ -336,7 +336,7 @@ function App() {
     const signinuserData = { email, password };
   
     try {
-      const response = await fetch(`http://localhost:8080${endpoint}`, {
+      const response = await fetch(`https://react-sticky-note.onrender.com${endpoint}`, {
         method: 'POST',
         body: JSON.stringify(isLogin ? signinuserData : signupuserData),
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -356,7 +356,7 @@ function App() {
       const userId = userInfo.user.id; // Ensure your token includes the user ID
 
         // Fetch user information using the user ID
-        const userResponse = await fetch(`http://localhost:8080/user/${userId}`, {
+        const userResponse = await fetch(`https://react-sticky-note.onrender.com/user/${userId}`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${data.token}` } // Include the token for authentication
         });
@@ -394,7 +394,7 @@ const handleImageUpload = async (event,noteitm) => {
       formData.append('image', file);
 
       try {
-        const response = await fetch(`http://localhost:8080/${noteitm._id}`, {
+        const response = await fetch(`https://react-sticky-note.onrender.com/${noteitm._id}`, {
           method: 'PATCH',
           body: formData
         });
