@@ -10,12 +10,11 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-
 const uri = 'mongodb+srv://swetakar:1924@cluster0.9c4up.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const JWT_SECRET = 'your_jwt_secret';
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000','https://react-sticky-note-2.onrender.com'],
     methods: 'GET, POST, PUT, DELETE, PATCH',
     credentials: true
 };
@@ -74,7 +73,7 @@ app.get('/', async (req, res) => {
 //         }
 //         res.json(item);
 //     } catch (error) {
-//         res.status(500).json({ message: error.message });
+//         res.status(500).json({ message: error.message });  bnvg'[;lkjbh gvcfxxhnj]
 //     }
 // });
 
@@ -82,7 +81,7 @@ app.post('/', upload.single('image'), async (req, res) => {
     try {
         const itembody = new Item(req.body);
         if (req.file) {
-            itembody.imageUrl = `http://localhost:${port}/uploads/${req.file.filename}`; 
+            itembody.imageUrl = `https://react-sticky-note.onrender.com/uploads/${req.file.filename}`; 
         } else {
             itembody.imageUrl = null;
         }
@@ -107,7 +106,7 @@ app.patch('/:id', upload.single('image'), async (req, res) => {
         Object.assign(updatedItem, req.body);
         console.log(req.file)
         if (req.file) {
-            updatedItem.imageUrl = `http://localhost:${port}/uploads/${req.file.filename}`;
+            updatedItem.imageUrl = `https://react-sticky-note.onrender.com/uploads/${req.file.filename}`;
         }
         // else{
         //     updatedItem.imageUrl = null;
@@ -139,7 +138,6 @@ app.delete('/:id', async (req, res) => {
 // Login Route
 app.post('/api/auth/login', async (req, res) => {
     const { email, password } = req.body;
-
     try {
         // Check if the user exists
         const user = await User.findOne({ email });

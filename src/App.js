@@ -5,7 +5,8 @@ import Draggable from 'react-draggable';
 import { Switch,Dialog } from "@headlessui/react";
 import {jwtDecode} from 'jwt-decode';
 import Avatar from '@mui/material/Avatar';
-import { deepPurple } from '@mui/material/colors';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 function App() {
   const [allNote, setAllNote] = React.useState([]);
@@ -33,7 +34,7 @@ function App() {
   const [password, setPassword] = React.useState('');
   const [isLogin, setIsLogin] = React.useState(true); // To toggle between Login and Signup
   const [message, setMessage] = React.useState('');
-  const [userData, setUserData] = React.useState({ name:'', email: ''});
+  const [userData, setUserData] = React.useState({ name:'', email: '', name: '' });
   const [selectedImage, setSelectedImage] = React.useState(null);
   const [IsSignIn, setIsSignIn] = React.useState(false);
 
